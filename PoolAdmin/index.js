@@ -17,6 +17,15 @@ app.use(express.urlencoded({
 }));
 const db = require('./util/mysql/connection.js')
 const port = process.env.port || 1500;
+var cors = require('cors')
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+}
+app.use(allowCrossDomain)
+app.use(cors())
 app.get("/", sessionChecker, (req, res) => {
     return res.status(200).render('main')
 })

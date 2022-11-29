@@ -9,7 +9,7 @@ window.onload = async() => {
         const winner = await ins.methods.show_winner().call({ from: accounts[0] })
         console.log(winner)
         if (winner[1] == 1) {
-            const candidateData = await ins.methods.candidates(winner[1]).call({ from: accounts[0] })
+            const candidateData = await ins.methods.candidates(winner[0]).call({ from: accounts[0] })
             const div = document.createElement('div')
             div.innerHTML = ` <div class="card bg-success" style="width: 18rem; margin-bottom: 15px;">
             <div class="card-body">
